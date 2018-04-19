@@ -1,9 +1,9 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/Documents/COURS_LICENSE/WEB/projet_web_2018/Playlists/WebApplication1/WebApplication1.csproj",
-    "projectName": "WebApplication1",
-    "projectPath": "/Documents/COURS_LICENSE/WEB/projet_web_2018/Playlists/WebApplication1/WebApplication1.csproj",
+    "projectUniqueName": "/Documents/COURS_LICENSE/WEB/projet_web_2018/Playlists/WebApplication1/Playlist.csproj",
+    "projectName": "Playlist",
+    "projectPath": "/Documents/COURS_LICENSE/WEB/projet_web_2018/Playlists/WebApplication1/Playlist.csproj",
     "outputPath": "/Documents/COURS_LICENSE/WEB/projet_web_2018/Playlists/WebApplication1/obj/",
     "projectStyle": "PackageReference",
     "fallbackFolders": [

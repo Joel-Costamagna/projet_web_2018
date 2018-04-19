@@ -19,7 +19,7 @@ namespace WebApplication1 {
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc();
 
-            services.AddDbContext<UserContext>(
+            services.AddDbContext<PlaylistContext>(
                 options => options.UseMySql(Configuration.GetConnectionString("IdentityConnection")));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -30,8 +30,7 @@ namespace WebApplication1 {
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
-            }
-            else {
+            } else {
                 app.UseExceptionHandler("/Home/Error");
             }
 

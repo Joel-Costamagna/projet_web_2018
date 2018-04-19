@@ -1,0 +1,46 @@
+@page
+@model Playlist.Pages.Playlists.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>PlaylistModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="PlaylistModel.nom" class="control-label">Nom </label>
+                <input asp-for="PlaylistModel.nom" class="form-control" />
+                <span asp-validation-for="PlaylistModel.nom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlaylistModel.description" class="control-label"> Description</label>
+                <input asp-for="PlaylistModel.description" class="form-control" />
+                <span asp-validation-for="PlaylistModel.description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"  value="True" asp-for="PlaylistModel.isPublic" /> Playlist publique ?
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="créer" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Retour</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

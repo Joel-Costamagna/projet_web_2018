@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Controllers;
 using WebApplication1.Models;
 
-public class AccountController : Controller {
+public class AccountController:Controller {
     public IActionResult Login(string returnUrl = null) {
         TempData["returnUrl"] = returnUrl;
         return View();
@@ -22,7 +21,7 @@ public class AccountController : Controller {
         }
 
         ApplicationUser lookupUser;
-        using (var context = new UserContext()) {
+        using (var context = new PlaylistContext()) {
             lookupUser = context.Users.FirstOrDefault(u => u.UserName == user.UserName);
         }
 
@@ -35,16 +34,10 @@ public class AccountController : Controller {
 
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
 
-        if (returnUrl == null) {
-            returnUrl = TempData["returnUrl"]?.ToString();
-        }
+        if (returnUrl == null) returnUrl = TempData["returnUrl"]?.ToString();
 
-        if (returnUrl != null) {
-            return Redirect(returnUrl);
-        }
-        else {
-            return RedirectToAction(nameof(HomeController.Index), "Home");
-        }
+        if (returnUrl != null) return Redirect(returnUrl);
+        return RedirectToAction(nameof(HomeController.Index), "Home");
     }
 
     public async Task<IActionResult> Logout() {
