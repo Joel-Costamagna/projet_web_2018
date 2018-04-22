@@ -1,9 +1,33 @@
-﻿@model ApplicationUser
+@page
+@model Playlist.Pages.Account.LoginModel
 @{
-    <form asp-antiforgery="true" asp-controller="Account" asp-action="Login">
-        User name: <input name="username" type="text" />
-        Password: <input name="password" type="password" />
-        <input name="submit" value="Login" type="submit" />
-        <input type="hidden" name="returnUrl" value="@Model" />
-    </form>
+    ViewData["Title"] = "Log in";
+}
+
+<h1>@ViewData["Title"]</h1>
+<div class="row">
+    <div class="col-md-3">
+        <form method="post">
+            <h2>Use a local account to log in.</h2>
+            <hr>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.Username"></label>
+                <input asp-for="Input.Username" class="form-control">
+                <span asp-validation-for="Input.Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control">
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Log in</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }

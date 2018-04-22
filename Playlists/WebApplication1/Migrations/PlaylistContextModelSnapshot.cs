@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
+using Playlist.Models;
 using System;
-using WebApplication1.Models;
 
 namespace Playlist.Migrations
 {
@@ -20,7 +20,7 @@ namespace Playlist.Migrations
                 .HasAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011");
 
-            modelBuilder.Entity("WebApplication1.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Playlist.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -28,67 +28,88 @@ namespace Playlist.Migrations
                     b.Property<string>("Password")
                         .IsRequired();
 
-                    b.Property<string>("UserName");
+                    b.Property<string>("UserName")
+                        .HasMaxLength(60);
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Musique", b =>
+            modelBuilder.Entity("Playlist.Models.Musique", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("PlaylistId");
+                    b.Property<string>("PlaylistModelId");
 
-                    b.Property<string>("description");
+                    b.Property<string>("URL")
+                        .IsRequired();
+
+                    b.Property<string>("description")
+                        .HasMaxLength(500);
 
                     b.Property<double>("duree");
 
-                    b.Property<string>("nom");
+                    b.Property<string>("nom")
+                        .IsRequired()
+                        .HasMaxLength(60);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlaylistId");
+                    b.HasIndex("PlaylistModelId");
 
                     b.ToTable("Musique");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Playlist", b =>
+            modelBuilder.Entity("Playlist.Models.PlaylistModel", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("description");
+                    b.Property<string>("description")
+                        .HasMaxLength(500);
 
                     b.Property<bool>("isPublic");
 
-                    b.Property<string>("nom");
+                    b.Property<string>("nom")
+                        .IsRequired()
+                        .HasMaxLength(60);
 
-                    b.Property<string>("proprietaireId")
+                    b.Property<string>("proprietaire_name")
                         .IsRequired();
 
                     b.HasKey("Id");
 
-                    b.HasIndex("proprietaireId");
-
                     b.ToTable("Playlists");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Musique", b =>
+            modelBuilder.Entity("Playlist.Models.Tags", b =>
                 {
-                    b.HasOne("WebApplication1.Models.Playlist")
-                        .WithMany("contenu")
-                        .HasForeignKey("PlaylistId");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("PlaylistModelId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlaylistModelId");
+
+                    b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("WebApplication1.Models.Playlist", b =>
+            modelBuilder.Entity("Playlist.Models.Musique", b =>
                 {
-                    b.HasOne("WebApplication1.Models.ApplicationUser", "proprietaire")
-                        .WithMany()
-                        .HasForeignKey("proprietaireId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                    b.HasOne("Playlist.Models.PlaylistModel")
+                        .WithMany("contenu")
+                        .HasForeignKey("PlaylistModelId");
+                });
+
+            modelBuilder.Entity("Playlist.Models.Tags", b =>
+                {
+                    b.HasOne("Playlist.Models.PlaylistModel")
+                        .WithMany("tags")
+                        .HasForeignKey("PlaylistModelId");
                 });
 #pragma warning restore 612, 618
         }

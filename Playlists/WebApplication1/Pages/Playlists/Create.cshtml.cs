@@ -1,35 +1,31 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using WebApplication1.Models;
+using Playlist.Controllers;
+using Playlist.Models;
 
-namespace Playlist.Pages.Playlists
-{
-    public class CreateModel : PageModel
-    {
-        private readonly WebApplication1.Models.PlaylistContext _context;
+namespace Playlist.Pages.Playlists {
+    public class CreateModel : PageModel {
+        private readonly PlaylistContext _context;
 
-        public CreateModel(WebApplication1.Models.PlaylistContext context)
-        {
+        public CreateModel(PlaylistContext context) {
             _context = context;
         }
 
-        public IActionResult OnGet()
-        {
+        public IActionResult OnGet() {
             return Page();
         }
 
         [BindProperty]
         public PlaylistModel PlaylistModel { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
+        public async Task<IActionResult> OnPostAsync() {
+            Console.WriteLine("onPost");
+            PlaylistModel.proprietaire_name = User.Identity.Name;
+            if (!ModelState.IsValid) {
+                Console.WriteLine("model invalid" + ModelState);
                 return Page();
             }
 

@@ -10,31 +10,35 @@
 <h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>PlaylistModel</h4>
-    <hr />
+    <hr/>
     <dl class="dl-horizontal">
+        @* ReSharper disable Html.TagNotClosed *@
         <dt>
-            @Html.DisplayNameFor(model => model.PlaylistModel.nom)
+            @Html.DisplayNameFor<string>(model => model.PlaylistModel.nom)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PlaylistModel.nom)
+            @Html.DisplayFor<string>(model => model.PlaylistModel.nom)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PlaylistModel.description)
+            @Html.DisplayNameFor<string>(model => model.PlaylistModel.description)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PlaylistModel.description)
+            @Html.DisplayFor<string>(model => model.PlaylistModel.description)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.PlaylistModel.isPublic)
+
+            @Html.DisplayNameFor<boolean>(model => model.PlaylistModel.isPublic)
+
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.PlaylistModel.isPublic)
+            @Html.DisplayFor<boolean>(model => model.PlaylistModel.isPublic)
         </dd>
+        @* ReSharper restore Html.TagNotClosed *@
     </dl>
-    
+
     <form method="post">
-        <input type="hidden" asp-for="PlaylistModel.Id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <input type="hidden" asp-for="PlaylistModel.Id"/>
+        <input type="submit" value="Delete" class="btn btn-default"/> |
         <a asp-page="./Index">Back to List</a>
     </form>
 </div>

@@ -21,6 +21,7 @@
     <Compile Remove="PagesPlaylists\Edit.cshtml.cs" />
     <Compile Remove="PagesPlaylists\Details.cshtml.cs" />
     <Compile Remove="PagesPlaylists\Delete.cshtml.cs" />
+    <Compile Remove="Migrations\20180419221454_Playlist.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="PagesPlaylists\Create.cshtml" />
@@ -32,7 +33,6 @@
   <ItemGroup>
     <Folder Include="Pages\Account\" />
     <Folder Include="Pages\Home\" />
-    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
@@ -41,5 +41,8 @@
     <Content Remove="Pages\Home\Index.cshtml" />
     <Content Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Remove="Pages\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
   </ItemGroup>
 </Project>

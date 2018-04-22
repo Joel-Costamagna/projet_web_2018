@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.Models;
+using Playlist.Models;
 
 namespace Playlist.Pages.Playlists
 {
     public class DeleteModel : PageModel
     {
-        private readonly WebApplication1.Models.PlaylistContext _context;
+        private readonly PlaylistContext _context;
 
-        public DeleteModel(WebApplication1.Models.PlaylistContext context)
+        public DeleteModel(PlaylistContext context)
         {
             _context = context;
         }
