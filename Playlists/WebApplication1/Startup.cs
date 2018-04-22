@@ -21,7 +21,7 @@ namespace Playlist {
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc().AddRazorPagesOptions(
                 options => {
-                    options.Conventions.AuthorizeFolder("/Playlists");
+                   /* options.Conventions.AuthorizeFolder("/Playlists");*/
                     options.Conventions.AllowAnonymousToPage("/Playlists/Index");
                     options.Conventions.AllowAnonymousToFolder("/Playlists/Details");
                 }
@@ -31,7 +31,7 @@ namespace Playlist {
                 options => options.UseMySql(Configuration.GetConnectionString("IdentityConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                    .AddEntityFrameworkStores<PlaylistContext>()
+                   /* .AddEntityFrameworkStores<PlaylistContext>()*/
                     .AddDefaultTokenProviders();
 
             services.Configure<IdentityOptions>(

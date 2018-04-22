@@ -1,13 +1,13 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/Documents/COURS_LICENSE/WEB/projet_web_2018/Playlists/WebApplication1/Playlist.csproj",
+    "projectUniqueName": "C:\\Users\\Aurkawl\\Desktop\\ProjetWebPlaylists\\projet_web_2018\\Playlists\\WebApplication1\\Playlist.csproj",
     "projectName": "Playlist",
-    "projectPath": "/Documents/COURS_LICENSE/WEB/projet_web_2018/Playlists/WebApplication1/Playlist.csproj",
-    "outputPath": "/Documents/COURS_LICENSE/WEB/projet_web_2018/Playlists/WebApplication1/obj/",
+    "projectPath": "C:\\Users\\Aurkawl\\Desktop\\ProjetWebPlaylists\\projet_web_2018\\Playlists\\WebApplication1\\Playlist.csproj",
+    "outputPath": "C:\\Users\\Aurkawl\\Desktop\\ProjetWebPlaylists\\projet_web_2018\\Playlists\\WebApplication1\\obj\\",
     "projectStyle": "PackageReference",
     "fallbackFolders": [
-      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "originalTargetFrameworks": [
       "netcoreapp2.0"
@@ -26,6 +26,14 @@
   "frameworks": {
     "netcoreapp2.0": {
       "dependencies": {
+        "Google.Apis": {
+          "target": "Package",
+          "version": "[1.32.2, )"
+        },
+        "Google.Apis.YouTube.v3": {
+          "target": "Package",
+          "version": "[1.32.2.1198, )"
+        },
         "Microsoft.AspNetCore.All": {
           "target": "Package",
           "version": "[2.0.3, )"
