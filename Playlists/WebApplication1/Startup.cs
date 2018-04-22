@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using System;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,8 +30,36 @@ namespace Playlist {
             services.AddDbContext<PlaylistContext>(
                 options => options.UseMySql(Configuration.GetConnectionString("IdentityConnection")));
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                    .AddCookie(options => options.LoginPath = new PathString("/account/login"));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<PlaylistContext>()
+                    .AddDefaultTokenProviders();
+
+            services.Configure<IdentityOptions>(
+                options => {
+                    /*
+                    options.Password.RequireDigit           = true;
+                    options.Password.RequiredLength         = 8;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase       = true;
+                    options.Password.RequireLowercase       = false;
+                    options.Password.RequiredUniqueChars    = 6;
+                    */
+                    // Lockout settings
+                    options.Lockout.DefaultLockoutTimeSpan  = TimeSpan.FromMinutes(30);
+                    options.Lockout.MaxFailedAccessAttempts = 10;
+                    options.Lockout.AllowedForNewUsers      = true;
+
+                    // User settings
+                    options.User.RequireUniqueEmail = true;
+                });
+
+            services.ConfigureApplicationCookie(
+                options => {
+                    // Cookie settings
+                    options.Cookie.HttpOnly   = true;
+                    options.ExpireTimeSpan    = TimeSpan.FromMinutes(30);
+                    options.SlidingExpiration = true;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
