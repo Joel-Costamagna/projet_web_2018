@@ -137,6 +137,7 @@ namespace Playlist.Controllers
     {
       var youtubeService = new YouTubeService(new BaseClientService.Initializer()
       {
+        //Clé API à mettre ici
         ApiKey = "REPLACE_ME",
         ApplicationName = this.GetType().ToString()
       });
@@ -149,8 +150,8 @@ namespace Playlist.Controllers
       var searchListResponse = await searchListRequest.ExecuteAsync();
 
       List<string> videos = new List<string>();
-      List<string> channels = new List<string>();
-      List<string> playlists = new List<string>();
+     // List<string> channels = new List<string>();
+     // List<string> playlists = new List<string>();
 
       // Add each result to the appropriate list, and then display the lists of
       // matching videos, channels, and playlists.
@@ -160,21 +161,21 @@ namespace Playlist.Controllers
         {
           case "youtube#video":
             videos.Add(String.Format("{0} ({1})", searchResult.Snippet.Title, searchResult.Id.VideoId));
-            break;
+           break;
 
           case "youtube#channel":
-            channels.Add(String.Format("{0} ({1})", searchResult.Snippet.Title, searchResult.Id.ChannelId));
+           // channels.Add(String.Format("{0} ({1})", searchResult.Snippet.Title, searchResult.Id.ChannelId));
             break;
 
           case "youtube#playlist":
-            playlists.Add(String.Format("{0} ({1})", searchResult.Snippet.Title, searchResult.Id.PlaylistId));
+            //playlists.Add(String.Format("{0} ({1})", searchResult.Snippet.Title, searchResult.Id.PlaylistId));
             break;
         }
       }
-
+      
       Console.WriteLine(String.Format("Videos:\n{0}\n", string.Join("\n", videos)));
-      Console.WriteLine(String.Format("Channels:\n{0}\n", string.Join("\n", channels)));
-      Console.WriteLine(String.Format("Playlists:\n{0}\n", string.Join("\n", playlists)));
+     // Console.WriteLine(String.Format("Channels:\n{0}\n", string.Join("\n", channels)));
+     // Console.WriteLine(String.Format("Playlists:\n{0}\n", string.Join("\n", playlists)));
     }
   }
     
