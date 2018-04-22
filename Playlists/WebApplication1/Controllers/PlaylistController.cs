@@ -27,7 +27,7 @@ namespace Playlist.Controllers
         }
     }
     
-     /// <summary>
+  /*   /// <summary>
   /// YouTube Data API v3 sample: create a playlist.
   /// Relies on the Google APIs Client Library for .NET, v1.7.0 or higher.
   /// See https://developers.google.com/api-client-library/dotnet/get_started
@@ -98,7 +98,9 @@ namespace Playlist.Controllers
 
       Console.WriteLine("Playlist item id {0} was added to playlist id {1}.", newPlaylistItem.Id, newPlaylist.Id);
     }
-  }
+  }*/
+  
+  
   
   /// <summary>
   /// YouTube Data API v3 sample: search by keyword.
