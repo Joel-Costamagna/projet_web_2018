@@ -14,13 +14,13 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.PlaylistModel[0].nom)
+                    @Html.DisplayNameFor(model => model.PlaylistModel[0].Nom)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PlaylistModel[0].description)
+                    @Html.DisplayNameFor(model => model.PlaylistModel[0].Description)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.PlaylistModel[0].isPublic)
+                    @Html.DisplayNameFor(model => model.PlaylistModel[0].IsPublic)
                 </th>
             <th></th>
         </tr>
@@ -29,13 +29,13 @@
 @foreach (var item in Model.PlaylistModel) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.nom)
+                @Html.DisplayFor(modelItem => item.Nom)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.description)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.isPublic)
+                @Html.DisplayFor(modelItem => item.IsPublic)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

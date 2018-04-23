@@ -23,7 +23,7 @@ namespace Playlist.Pages.Playlists {
 
         public async Task<IActionResult> OnPostAsync() {
             Console.WriteLine("onPost");
-            PlaylistModel.proprietaire_name = User.Identity.Name;
+            PlaylistModel.ProprietaireName = User.Identity.Name;
             if (!ModelState.IsValid) {
                 Console.WriteLine("model invalid" + ModelState);
                 return Page();
