@@ -30,9 +30,9 @@ namespace Playlist {
             services.AddDbContext<PlaylistContext>(
                 options => options.UseMySql(Configuration.GetConnectionString("IdentityConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                   /* .AddEntityFrameworkStores<PlaylistContext>()*/
-                    .AddDefaultTokenProviders();
+           /* services.AddIdentity<ApplicationUser, IdentityRole>()
+                    .AddEntityFrameworkStores<PlaylistContext>()
+                    .AddDefaultTokenProviders();*/
 
             services.Configure<IdentityOptions>(
                 options => {
