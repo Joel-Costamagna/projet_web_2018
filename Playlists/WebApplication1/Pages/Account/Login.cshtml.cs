@@ -37,10 +37,6 @@ namespace Playlist.Pages.Account {
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ViewData["ReturnUrl"] = returnUrl;
-            if (!String.IsNullOrEmpty(returnUrl) &&
-                returnUrl.IndexOf("checkout", StringComparison.OrdinalIgnoreCase) >= 0) {
-                ViewData["ReturnUrl"] = "/Basket/Index";
-            }
         }
 
         public async Task<IActionResult> OnPost(string returnUrl = null) {
