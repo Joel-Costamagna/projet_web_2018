@@ -20,40 +20,24 @@ namespace Playlist.Migrations
                 .HasAnnotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn)
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011");
 
-            modelBuilder.Entity("Playlist.Models.ApplicationUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Password")
-                        .IsRequired();
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(60);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
             modelBuilder.Entity("Playlist.Models.Musique", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("PlaylistModelId");
-
-                    b.Property<string>("URL")
-                        .IsRequired();
-
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .HasMaxLength(500);
 
-                    b.Property<double>("duree");
+                    b.Property<double>("Duree");
 
-                    b.Property<string>("nom")
+                    b.Property<string>("Nom")
                         .IsRequired()
                         .HasMaxLength(60);
+
+                    b.Property<string>("PlaylistModelId");
+
+                    b.Property<string>("Url")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -67,16 +51,16 @@ namespace Playlist.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("description")
+                    b.Property<string>("Description")
                         .HasMaxLength(500);
 
-                    b.Property<bool>("isPublic");
+                    b.Property<bool>("IsPublic");
 
-                    b.Property<string>("nom")
+                    b.Property<string>("Nom")
                         .IsRequired()
                         .HasMaxLength(60);
 
-                    b.Property<string>("proprietaire_name")
+                    b.Property<string>("ProprietaireName")
                         .IsRequired();
 
                     b.HasKey("Id");
@@ -101,14 +85,14 @@ namespace Playlist.Migrations
             modelBuilder.Entity("Playlist.Models.Musique", b =>
                 {
                     b.HasOne("Playlist.Models.PlaylistModel")
-                        .WithMany("contenu")
+                        .WithMany("Musiques")
                         .HasForeignKey("PlaylistModelId");
                 });
 
             modelBuilder.Entity("Playlist.Models.Tags", b =>
                 {
                     b.HasOne("Playlist.Models.PlaylistModel")
-                        .WithMany("tags")
+                        .WithMany("Tags")
                         .HasForeignKey("PlaylistModelId");
                 });
 #pragma warning restore 612, 618

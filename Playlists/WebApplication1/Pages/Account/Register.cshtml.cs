@@ -3,16 +3,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Playlist.Models;
 
 namespace Playlist.Pages.Account {
     public class RegisterModel : PageModel {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser>   _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser>   _userManager;
 
         public RegisterModel(
-            SignInManager<ApplicationUser> signInManager,
-            UserManager<ApplicationUser>   userManager
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser>   userManager
         ) {
             _signInManager = signInManager;
             _userManager   = userManager;
@@ -41,7 +40,7 @@ namespace Playlist.Pages.Account {
 
         public async Task<IActionResult> OnPost(string returnUrl = "/Index") {
             if (ModelState.IsValid) {
-                var user   = new ApplicationUser {UserName = UserDetails.Email};
+                var user   = new IdentityUser {UserName = UserDetails.Email, Email = UserDetails.Email};
                 var result = await _userManager.CreateAsync(user, UserDetails.Password);
                 if (result.Succeeded) {
                     await _signInManager.SignInAsync(user, isPersistent: false);

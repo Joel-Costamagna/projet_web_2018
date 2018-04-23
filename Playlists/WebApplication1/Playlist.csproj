@@ -34,7 +34,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Account\" />
-    <Folder Include="Pages\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Pages\Shared\_ValidationScriptsPartial.cshtml" />
@@ -46,5 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Home\About.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Home\Contact.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Home\Index.cshtml" />
   </ItemGroup>
 </Project>

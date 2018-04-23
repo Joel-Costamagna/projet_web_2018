@@ -4,52 +4,44 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Playlist.Models;
 
 namespace Playlist.Controllers {
-    [Authorize]
-    [Route("[controller]/[action]")]
     public class AccountController : Controller {
-        private ILogger<AccountController> _logger;
+        private readonly UserManager<IdentityUser>   _userManager;
+        private readonly RoleManager<IdentityRole>   _roleManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly ILogger                     _logger;
+        private readonly PlaylistContext             _context;
+        private readonly IConfiguration              _configuration;
 
-        public AccountController(ILogger<AccountController> logger) : base() {
-            _logger = logger;
+        public AccountController(
+            UserManager<IdentityUser>   userManager,
+            RoleManager<IdentityRole>   roleManager,
+            SignInManager<IdentityUser> signInManager,
+            ILoggerFactory              loggerFactory,
+            PlaylistContext             context,
+            IConfiguration              configuration
+        ) {
+            _userManager   = userManager;
+            _roleManager   = roleManager;
+            _signInManager = signInManager;
+            _logger        = loggerFactory.CreateLogger<AccountController>();
+            _context       = context;
+            _configuration = configuration;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(ApplicationUser user, string returnUrl = null) {
-            const string badUserNameOrPasswordMessage = "Username or password is incorrect.";
-            if (user == null) {
-                return BadRequest(badUserNameOrPasswordMessage);
-            }
-
-            ApplicationUser lookupUser;
-            using (var context = new PlaylistContext()) {
-                lookupUser = context.Users.FirstOrDefault(u => u.UserName == user.UserName);
-            }
-
-            if (lookupUser?.Password != user.Password) {
-                return BadRequest(badUserNameOrPasswordMessage);
-            }
-
-            var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-            identity.AddClaim(new Claim(ClaimTypes.Name, lookupUser?.UserName));
-
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(identity));
-
-            if (returnUrl == null) returnUrl = TempData["returnUrl"]?.ToString();
-
-            if (returnUrl != null) return Redirect(returnUrl);
-            return RedirectToAction(nameof(HomeController.Index), "Home");
-        }
-
-        public async Task<IActionResult> Logout() {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToPage("/Account/SignedOut");
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            _logger.LogInformation("User logged out.");
+            return RedirectToPage("/Index");
         }
     }
 }
