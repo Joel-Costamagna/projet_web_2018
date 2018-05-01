@@ -24,7 +24,7 @@ namespace Playlist.Migrations.Identity
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -33,7 +33,7 @@ namespace Playlist.Migrations.Identity
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedName")
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.HasKey("Id");
 
@@ -48,7 +48,7 @@ namespace Playlist.Migrations.Identity
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("ClaimType");
 
@@ -56,7 +56,7 @@ namespace Playlist.Migrations.Identity
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.HasKey("Id");
 
@@ -69,7 +69,7 @@ namespace Playlist.Migrations.Identity
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<int>("AccessFailedCount");
 
@@ -86,10 +86,10 @@ namespace Playlist.Migrations.Identity
                     b.Property<DateTimeOffset?>("LockoutEnd");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("PasswordHash");
 
@@ -120,7 +120,7 @@ namespace Playlist.Migrations.Identity
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("ClaimType");
 
@@ -128,7 +128,7 @@ namespace Playlist.Migrations.Identity
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.HasKey("Id");
 
@@ -140,16 +140,16 @@ namespace Playlist.Migrations.Identity
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("ProviderDisplayName");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -161,10 +161,10 @@ namespace Playlist.Migrations.Identity
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("RoleId")
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.HasKey("UserId", "RoleId");
 
@@ -176,13 +176,13 @@ namespace Playlist.Migrations.Identity
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("Name")
-                        .HasMaxLength(20);
+                        .HasMaxLength(85);
 
                     b.Property<string>("Value");
 

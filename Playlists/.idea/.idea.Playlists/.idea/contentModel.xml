@@ -15,9 +15,19 @@
           <e p="HomeController.cs" t="Include" />
           <e p="PlaylistController.cs" t="Include" />
         </e>
+        <e p="Data" t="Include">
+          <e p="IdentityContext.cs" t="Include" />
+        </e>
         <e p="Migrations" t="Include">
-          <e p="20180422203323_Migrationsnv.cs" t="Include" />
-          <e p="20180422203323_Migrationsnv.Designer.cs" t="Include" />
+          <e p="20180430030207_migrationplaylist.cs" t="Include" />
+          <e p="20180430030207_migrationplaylist.Designer.cs" t="Include" />
+          <e p="20180430220753_migrationsPlaylistchangement.cs" t="Include" />
+          <e p="20180430220753_migrationsPlaylistchangement.Designer.cs" t="Include" />
+          <e p="Identity" t="Include">
+            <e p="20180430030235_migrationidentity.cs" t="Include" />
+            <e p="20180430030235_migrationidentity.Designer.cs" t="Include" />
+            <e p="IdentityContextModelSnapshot.cs" t="Include" />
+          </e>
           <e p="PlaylistContextModelSnapshot.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
@@ -39,17 +49,20 @@
           <e p="About.cshtml" t="Include" />
           <e p="About.cshtml.cs" t="Include" />
           <e p="Account" t="Include">
+            <e p="_ViewImports.cshtml" t="Include" />
             <e p="Login.cshtml" t="Include" />
+            <e p="Login.cshtml.cs" t="Include" />
+            <e p="Logout.cshtml" t="Include" />
+            <e p="Logout.cshtml.cs" t="Include" />
             <e p="Register.cshtml" t="Include" />
             <e p="Register.cshtml.cs" t="Include" />
+            <e p="SignedOut.cshtml" t="Include" />
+            <e p="SignedOut.cshtml.cs" t="Include" />
           </e>
           <e p="Contact.cshtml" t="Include" />
           <e p="Contact.cshtml.cs" t="Include" />
           <e p="Error.cshtml" t="Include" />
           <e p="Error.cshtml.cs" t="Include" />
-          <e p="Home" t="Include">
-            <e p="About.cshtml" t="Include" />
-          </e>
           <e p="Index.cshtml" t="Include" />
           <e p="Index.cshtml.cs" t="Include" />
           <e p="Playlists" t="Include">
@@ -61,6 +74,8 @@
             <e p="Details.cshtml.cs" t="Include" />
             <e p="Edit.cshtml" t="Include" />
             <e p="Edit.cshtml.cs" t="Include" />
+            <e p="EditItem.cshtml" t="Include" />
+            <e p="EditItem.cshtml.cs" t="Include" />
             <e p="Index.cshtml" t="Include" />
             <e p="Index.cshtml.cs" t="Include" />
           </e>
