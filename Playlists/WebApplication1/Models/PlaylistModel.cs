@@ -17,10 +17,10 @@ namespace Playlist.Models {
         [Key]
         public string Id { get; set; }
 
-        [Required]
+       
         public string ProprietaireName { get; set; }
 
-        [Required, StringLength(60, MinimumLength = 3)]
+        [Required]
         public string Nom { get; set; }
 
         [StringLength(500)]
@@ -60,6 +60,12 @@ namespace Playlist.Models {
         public string Url { get; set; }
     }
 
+    public class SearchMusic
+    {
+        public string Keyword;
+    }
+    
+    
     public class ApplicationUser {
         [Key]
         public string Id { get; set; }

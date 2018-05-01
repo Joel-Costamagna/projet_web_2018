@@ -1,13 +1,13 @@
 @page
-@model Playlist.Pages.Playlists.DetailsModel
+
+@model Playlist.Pages.Playlists.EditItemModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Search Video";
 }
-
-<h2>Details</h2>
+<h2>Results</h2>
 <div>
-    <h4>PlaylistModel</h4>
+    <h4>Results</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -30,14 +30,9 @@
         </dd>
     </dl>
 </div>
-<div class="form-horizontal">
-    <input asp-action="SearchMusic.Keybord" type="search" placeholder="Rechercher une vidéo" class="text"/>
-    <input type="submit" value="Search" class="btn btn-default"/>
-</div>
 <div>
     @if (Model.PlaylistModel.Musiques == null)
     {
-       
         <label> Aucun élèments disponible</label>
     }
     else

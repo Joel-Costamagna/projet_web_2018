@@ -7,7 +7,7 @@
 
 <h2>Edit</h2>
 
-<h4>PlaylistModel</h4>
+<h4>Playlist Model</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -33,6 +33,9 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+            <div>
+                @Html.HiddenFor(m => m.PlaylistModel.ProprietaireName,  "usertest@example.com")
             </div>
         </form>
     </div>

@@ -13,6 +13,8 @@ namespace Playlist.Pages.Playlists {
             _context = context;
         }
 
+    
+        
         [BindProperty]
         public PlaylistModel PlaylistModel { get; set; }
 
@@ -31,6 +33,8 @@ namespace Playlist.Pages.Playlists {
         }
 
         public async Task<IActionResult> OnPostAsync() {
+            PlaylistModel.ProprietaireName  = User.Identity.Name;
+            
             if (!ModelState.IsValid) {
                 return Page();
             }

@@ -1,7 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Playlist.Controllers;
 using Playlist.Models;
@@ -23,9 +27,11 @@ namespace Playlist.Pages.Playlists {
 
         public async Task<IActionResult> OnPostAsync() {
             Console.WriteLine("onPost");
-            PlaylistModel.ProprietaireName = User.Identity.Name;
+            PlaylistModel.ProprietaireName  = User.Identity.Name;
+            PlaylistModel.Musiques = new List<Musique>();
+            PlaylistModel.Tags = new List<Tags>();
+           
             if (!ModelState.IsValid) {
-                Console.WriteLine("model invalid" + ModelState);
                 return Page();
             }
 

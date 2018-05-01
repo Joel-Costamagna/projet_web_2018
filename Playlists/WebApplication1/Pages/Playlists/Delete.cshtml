@@ -12,28 +12,24 @@
     <h4>PlaylistModel</h4>
     <hr/>
     <dl class="dl-horizontal">
-        @* ReSharper disable Html.TagNotClosed *@
         <dt>
-            @Html.DisplayNameFor<string>(model => model.PlaylistModel.nom)
+            @Html.DisplayNameFor(model => model.PlaylistModel.Nom)
         </dt>
         <dd>
-            @Html.DisplayFor<string>(model => model.PlaylistModel.nom)
+            @Html.DisplayFor(model => model.PlaylistModel.Nom)
         </dd>
         <dt>
-            @Html.DisplayNameFor<string>(model => model.PlaylistModel.description)
+            @Html.DisplayNameFor(model => model.PlaylistModel.Description)
         </dt>
         <dd>
-            @Html.DisplayFor<string>(model => model.PlaylistModel.description)
+            @Html.DisplayFor(model => model.PlaylistModel.Description)
         </dd>
         <dt>
-
-            @Html.DisplayNameFor<boolean>(model => model.PlaylistModel.isPublic)
-
+            @Html.DisplayNameFor(model => model.PlaylistModel.IsPublic)
         </dt>
         <dd>
-            @Html.DisplayFor<boolean>(model => model.PlaylistModel.isPublic)
+            @Html.DisplayFor(model => model.PlaylistModel.IsPublic)
         </dd>
-        @* ReSharper restore Html.TagNotClosed *@
     </dl>
 
     <form method="post">
